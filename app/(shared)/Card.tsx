@@ -19,17 +19,29 @@ const Card = ({
   isLongForm = false,
 }: Props) => {
   const { id, title, author, createdAt, image, snippet } = post || {};
-  const date = createdAt ? new Date(createdAt) : null;
+  
+  const date = new Date(createdAt);
   const options = { year: "numeric", month: "long", day: "numeric" } as any;
-  const formattedDate = date ? date.toLocaleDateString("en-US", options) : "";
-
+  const formattedDate = date.toLocaleDateString("en-US", options);
 
   return (
     <div className={className}>
             <Link className='basis-full hover:opacity-70' 
                 href={`${process.env.NEXT_PUBLIC_BASE_URL}/post/${post?.id}`}
                 >
-                <div className={`relative w-auto mb-3 ${imageHeight}`}></div>
+                <div className={`relative w-auto mb-3 ${imageHeight}`}>
+                <Image
+                  fill
+                  style={{objectFit: 'cover'}}
+                  src={image}
+                  alt='tech'
+                  sizes='(max-width: 480px) 100vw, 
+                  (max-width: 768px) 75vw,
+                  (max-width: 1060px) 50vw
+                  33vw'
+                  placeholder='blur'
+              />
+                </div>
             </Link>
         <div className='basis-full'>
             <Link  
@@ -42,9 +54,9 @@ const Card = ({
             </Link>
             <div className={`${isSmallCard ? "my-2" : "flex my-3"} gap-3`}>
                 <h5 className="font-semibold text-xs">{author}</h5>
-                <h6 className='text-wh-300 text-sm'>{formattedDate}</h6>
+                <h6 className='text-wh-500 text-sm'>{formattedDate}</h6>
             </div>
-            <p className={`text-wh-100 ${isLongForm ? 'line-clamp-5' : 'line-clamp-3'}`}>
+            <p className={`text-wh-500 ${isLongForm ? 'line-clamp-5' : 'line-clamp-3'}`}>
                 {snippet}
             </p>
         </div>

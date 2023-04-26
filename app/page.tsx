@@ -21,7 +21,6 @@ const getPosts = async () => {
       };
     })
   );
-
   return formattedPosts;
 };
 

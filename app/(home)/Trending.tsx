@@ -18,7 +18,13 @@ const  TrendingCard = ({ className, post}: TrendingCardProps) => {
         <Image
           fill
           style={{objectFit: 'cover'}}
-          src={post.image}
+          src={post?.image}
+          alt='tech'
+          sizes='(max-width: 480px) 100vw, 
+          (max-width: 768px) 75vw,
+          (max-width: 1060px) 50vw
+          33vw'
+          placeholder='blur'
         />
       </div>
       <div className='absolute z-1 top-0 left-0 w-full h-full bg-gradient-gradual' />
@@ -41,7 +47,7 @@ const Trending = ({trendingPosts}: Props) => {
   return (
     <section className='pt-3 pb-10'> 
      <div className='flex items-center gap-3'>
-        <div className='bg-wh-900 py-2 px-8 text-wh-10 text-sm font-bold'>
+        <div className=' py-2 px-8 text-wh-10 bg-wh-900 text-sm font-bold'>
             TRENDING
         </div>
         <p className='text-sm'>
@@ -49,10 +55,10 @@ const Trending = ({trendingPosts}: Props) => {
         </p>
      </div>
       <div className='sm:grid gap-5 grid-cols-4 grid-rows-2 sm:h-[600px] my-3'>
-        <TrendingCard className='col-span-2 row-span-2  bg-wh-500 ' post={trendingPosts[0]}/>
-        <TrendingCard className='col-span-2 row-span-1  bg-wh-500 ' post={trendingPosts[1]}/>
-        <TrendingCard className='col-span-1 row-span-1  bg-wh-500 ' post={trendingPosts[2]}/>
-        <TrendingCard className='col-span-1 row-span-1  bg-wh-500 ' post={trendingPosts[3]}/>
+        <TrendingCard className='col-span-2 row-span-2  ' post={trendingPosts[0]}/>
+        <TrendingCard className='col-span-2 row-span-1  ' post={trendingPosts[1]}/>
+        <TrendingCard className='col-span-1 row-span-1  ' post={trendingPosts[2]}/>
+        <TrendingCard className='col-span-1 row-span-1  ' post={trendingPosts[3]}/>
       </div>
       <p className='text-sm'>
       New upcoming tech trends are set to revolutionize the way we live and work. From virtual reality to blockchain, these advancements have the potential to transform industries and streamline processes. It's an exciting time to witness these transformative changes just around the corner.      </p>
